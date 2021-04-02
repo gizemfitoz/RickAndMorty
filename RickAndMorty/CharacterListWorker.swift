@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import API
 
 protocol CharacterListWorkingLogic: AnyObject {
-    
+    func getCharacters(page: String,
+                       onSuccess: @escaping (CharactersResponse) -> Void,
+                       onError: @escaping (String) -> Void)
 }
 
 final class CharacterListWorker: CharacterListWorkingLogic {
-    
+    func getCharacters(page: String,
+                       onSuccess: @escaping (CharactersResponse) -> Void,
+                       onError: @escaping (String) -> Void) {
+        API.getCharacters(page: page, onSuccess: onSuccess, onError: onError)
+    }
 }

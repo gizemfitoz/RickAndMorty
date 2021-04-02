@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Extensions
 
 final class AppRouter {
     let window: UIWindow
@@ -15,7 +16,7 @@ final class AppRouter {
     }
     
     func start() {
-        let viewController = UIViewController()
+        let viewController = UIStoryboard.loadViewController() as CharacterListViewController        
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

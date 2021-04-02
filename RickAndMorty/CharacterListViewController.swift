@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Extensions
 
 protocol CharacterListDisplayLogic: AnyObject {
     
 }
 
-final class CharacterListViewController: UIViewController {
+final class CharacterListViewController: UIViewController, StoryboardLoadable {
     
     var interactor: CharacterListBusinessLogic?
     var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
@@ -41,6 +42,11 @@ final class CharacterListViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor?.getCharacters()
     }
 }
 

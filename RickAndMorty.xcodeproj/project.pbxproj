@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,9 @@
 		1C4BBC4A2617BF27003A4DC2 /* CharacterListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BBC432617BF27003A4DC2 /* CharacterListModels.swift */; };
 		1C4BBC4B2617BF27003A4DC2 /* CharacterListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BBC442617BF27003A4DC2 /* CharacterListWorker.swift */; };
 		1C4BBC4C2617BF27003A4DC2 /* CharacterListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BBC452617BF27003A4DC2 /* CharacterListRouter.swift */; };
+		1C4BBC8B2617CD9E003A4DC2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1C4BBC8A2617CD9E003A4DC2 /* Alamofire */; };
+		1C4BBC9A2617DDF6003A4DC2 /* API in Frameworks */ = {isa = PBXBuildFile; productRef = 1C4BBC992617DDF6003A4DC2 /* API */; };
+		1C4BBCA52617E3CD003A4DC2 /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 1C4BBCA42617E3CD003A4DC2 /* Extensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C4BBCA52617E3CD003A4DC2 /* Extensions in Frameworks */,
+				1C4BBC8B2617CD9E003A4DC2 /* Alamofire in Frameworks */,
+				1C4BBC9A2617DDF6003A4DC2 /* API in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +101,7 @@
 				1C4BBC042617B93A003A4DC2 /* RickAndMortyTests */,
 				1C4BBC0F2617B93A003A4DC2 /* RickAndMortyUITests */,
 				1C4BBBEC2617B938003A4DC2 /* Products */,
+				1C4BBC982617DDF6003A4DC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +185,13 @@
 			name = CharacterList;
 			sourceTree = "<group>";
 		};
+		1C4BBC982617DDF6003A4DC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,6 +208,11 @@
 			dependencies = (
 			);
 			name = RickAndMorty;
+			packageProductDependencies = (
+				1C4BBC8A2617CD9E003A4DC2 /* Alamofire */,
+				1C4BBC992617DDF6003A4DC2 /* API */,
+				1C4BBCA42617E3CD003A4DC2 /* Extensions */,
+			);
 			productName = RickAndMorty;
 			productReference = 1C4BBBEB2617B938003A4DC2 /* RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
@@ -265,6 +284,9 @@
 				Base,
 			);
 			mainGroup = 1C4BBBE22617B938003A4DC2;
+			packageReferences = (
+				1C4BBC892617CD9E003A4DC2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 1C4BBBEC2617B938003A4DC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -493,7 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gizemfitoz.RickAndMorty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -511,7 +533,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gizemfitoz.RickAndMorty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -635,6 +657,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C4BBC892617CD9E003A4DC2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C4BBC8A2617CD9E003A4DC2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C4BBC892617CD9E003A4DC2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1C4BBC992617DDF6003A4DC2 /* API */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = API;
+		};
+		1C4BBCA42617E3CD003A4DC2 /* Extensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Extensions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C4BBBE32617B938003A4DC2 /* Project object */;
 }
