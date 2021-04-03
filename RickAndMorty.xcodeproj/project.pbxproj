@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C32DFBD2618981900B30111 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32DFBC2618981900B30111 /* BaseViewController.swift */; };
 		1C4BBBEF2617B938003A4DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */; };
 		1C4BBBF82617B93A003A4DC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */; };
 		1C4BBBFB2617B93A003A4DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BBBF92617B93A003A4DC2 /* LaunchScreen.storyboard */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C32DFBC2618981900B30111 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1C4BBBEB2617B938003A4DC2 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C32DFBB2618980500B30111 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1C32DFBC2618981900B30111 /* BaseViewController.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		1C4BBBE22617B938003A4DC2 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 		1C4BBC3E2617BEF1003A4DC2 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				1C32DFBB2618980500B30111 /* Base */,
 				1C4BBC542617BF56003A4DC2 /* CharacterList */,
 				1CFFABD226187D2E007B9E43 /* CharacterDetail */,
 			);
@@ -233,8 +244,8 @@
 		1CFFABCE26187CA3007B9E43 /* CharacterGridCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1CFFABB4261804C9007B9E43 /* CharacterGridCollectionViewCell.xib */,
 				1CFFABC8261807CD007B9E43 /* CharacterGridCollectionViewCell.swift */,
+				1CFFABB4261804C9007B9E43 /* CharacterGridCollectionViewCell.xib */,
 			);
 			name = CharacterGridCollectionViewCell;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 				1CFFABDB26187D47007B9E43 /* CharacterDetailViewController.swift in Sources */,
 				1C4BBC472617BF27003A4DC2 /* CharacterListViewController.swift in Sources */,
 				1C4BBC482617BF27003A4DC2 /* CharacterListPresenter.swift in Sources */,
+				1C32DFBD2618981900B30111 /* BaseViewController.swift in Sources */,
 				1C4BBC492617BF27003A4DC2 /* CharacterListInteractor.swift in Sources */,
 				1C4BBC4C2617BF27003A4DC2 /* CharacterListRouter.swift in Sources */,
 				1C4BBC312617BB33003A4DC2 /* AppRouter.swift in Sources */,

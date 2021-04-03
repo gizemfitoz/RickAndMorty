@@ -6,16 +6,16 @@
 //
 
 import UIKit
-import Extensions
 
 protocol CharacterListDisplayLogic: AnyObject {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel)
     func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel)
-    func displayError(error: String)
     func displayCharacterDetail()
+    func displayLoader(hide: Bool)
+    func displayError(error: String)
 }
 
-final class CharacterListViewController: UIViewController, StoryboardLoadable {
+final class CharacterListViewController: BaseViewController {
     @IBOutlet var charactersCollectionView: UICollectionView!
     var interactor: CharacterListBusinessLogic?
     var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
@@ -90,14 +90,16 @@ extension CharacterListViewController: CharacterListDisplayLogic {
         charactersCollectionView.reloadData()
     }
     
-    func displayError(error: String) {
-        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     func displayCharacterDetail() {
         router?.routeToCharacterDetail()
+    }
+    
+    func displayLoader(hide: Bool) {
+        hide ? hideLoadingView() : showLoadingView()
+    }
+    
+    func displayError(error: String) {
+        showError(error: error)
     }
 }
 

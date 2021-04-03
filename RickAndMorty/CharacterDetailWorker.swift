@@ -12,6 +12,10 @@ protocol CharacterDetailWorkingLogic: AnyObject {
     func getCharacter(id: Int,
                       onSuccess: @escaping (CharactersResponse.Character) -> Void,
                       onError: @escaping (String) -> Void)
+    
+    func getEpisode(url: String,
+                    onSuccess: @escaping (EpisodeResponse) -> Void,
+                    onError: @escaping (String) -> Void)
 }
 
 final class CharacterDetailWorker: CharacterDetailWorkingLogic {
@@ -19,5 +23,13 @@ final class CharacterDetailWorker: CharacterDetailWorkingLogic {
                       onSuccess: @escaping (CharactersResponse.Character) -> Void,
                       onError: @escaping (String) -> Void) {
         API.getCharacter(id: id, onSuccess: onSuccess, onError: onError)
+    }
+    
+    func getEpisode(url: String,
+                    onSuccess: @escaping (EpisodeResponse) -> Void,
+                    onError: @escaping (String) -> Void) {
+        API.getEpisode(url: url,
+                       onSuccess: onSuccess,
+                       onError: onError)
     }
 }

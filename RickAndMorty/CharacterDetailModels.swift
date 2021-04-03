@@ -6,23 +6,36 @@
 //
 
 import Foundation
+import API
 
 enum CharacterDetail {
-    
-    enum Case {
-        
-        struct Request {
-            
-        }
+    enum Character {
+        struct Request {}
         
         struct Response {
-            
+            var character: CharactersResponse.Character
         }
         
         struct ViewModel {
-            
+            var image: String
+            var name: String
+            var status: String
+            var species: String
+            var gender: String
+            var numberOfEpisodes: String
+            var originLocationName: String
+            var lastKnownLocationName: String
         }
-        
     }
     
+    enum Episode {
+        struct Response {
+            var episode: EpisodeResponse
+        }
+        
+        struct ViewModel {
+            var lastSeenEpisodeName: String
+            var lastSeenEpisodeAirDate: String
+        }
+    }
 }

@@ -19,15 +19,35 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
     var presenter: CharacterDetailPresentationLogic?
     var worker: CharacterDetailWorkingLogic = CharacterDetailWorker()
     var characterId: Int!
-
+    
     func fetchCharacter() {
-        worker.getCharacter(id: characterId) { [weak self] (response) in
-            // TODO
-            print(response)
-        } onError: {  [weak self] error in
-            // TODO
-            print(error)
+        self.presenter?.presentLoader(hide: false)
+        worker.getCharacter(id: characterId) { [weak self] response in
+            guard let self = self else { return }
+            self.presenter?.presentCharacterDetail(
+                response: CharacterDetail.Character.Response(character: response)
+            )
+            
+            guard let lastEpisodeUrl = response.episodes.last else { return }
+            self.fetchEpisode(url: lastEpisodeUrl)
+        } onError: { [weak self] error in
+            guard let self = self else { return }
+            self.presenter?.presentLoader(hide: true)
+            self.presenter?.presentError(error: error)
         }
-
+    }
+    
+    func fetchEpisode(url: String) {
+        worker.getEpisode(url: url) { [weak self] response in
+            guard let self = self else { return }
+            self.presenter?.presentLoader(hide: true)
+            self.presenter?.presentEpisode(
+                response: CharacterDetail.Episode.Response(episode: response)
+            )
+        } onError: { [weak self] error in
+            guard let self = self else { return }
+            self.presenter?.presentLoader(hide: true)
+            self.presenter?.presentError(error: error)
+        }
     }
 }

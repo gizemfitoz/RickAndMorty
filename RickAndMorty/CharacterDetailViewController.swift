@@ -6,14 +6,27 @@
 //
 
 import UIKit
-import Extensions
+import SDWebImage
 
 protocol CharacterDetailDisplayLogic: AnyObject {
-    
+    func displayCharacterDetail(viewModel: CharacterDetail.Character.ViewModel)
+    func displayEpisode(viewModel: CharacterDetail.Episode.ViewModel)
+    func displayLoader(hide: Bool)
+    func displayError(error: String)
 }
 
-final class CharacterDetailViewController: UIViewController, StoryboardLoadable {
-    
+final class CharacterDetailViewController: BaseViewController {
+    @IBOutlet weak var characterImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var speciesLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var numberOfEpisodesLabel: UILabel!
+    @IBOutlet weak var originLocationNameLabel: UILabel!
+    @IBOutlet weak var lastKnownLocationLabel: UILabel!
+    @IBOutlet weak var lastSeenEpisodeNameLabel: UILabel!
+    @IBOutlet weak var lastSeenEpisodeAirDateLabel: UILabel!
+    @IBOutlet weak var episodeStackView: UIStackView!
     var interactor: CharacterDetailBusinessLogic?
     var router: (CharacterDetailRoutingLogic & CharacterDetailDataPassing)?
         
@@ -47,5 +60,27 @@ final class CharacterDetailViewController: UIViewController, StoryboardLoadable 
 }
 
 extension CharacterDetailViewController: CharacterDetailDisplayLogic {
+    func displayCharacterDetail(viewModel: CharacterDetail.Character.ViewModel) {
+        characterImageView.sd_setImage(with: URL(string: viewModel.image), completed: nil)
+        nameLabel.text = viewModel.name
+        statusLabel.text = viewModel.status
+        speciesLabel.text = viewModel.species
+        genderLabel.text = viewModel.gender
+        numberOfEpisodesLabel.text = viewModel.numberOfEpisodes
+        originLocationNameLabel.text = viewModel.originLocationName
+    }
     
+    func displayEpisode(viewModel: CharacterDetail.Episode.ViewModel) {
+        episodeStackView.isHidden = false
+        lastSeenEpisodeNameLabel.text = viewModel.lastSeenEpisodeName
+        lastSeenEpisodeAirDateLabel.text = viewModel.lastSeenEpisodeAirDate
+    }
+    
+    func displayLoader(hide: Bool) {
+        hide ? hideLoadingView() : showLoadingView()
+    }
+    
+    func displayError(error: String) {
+        showError(error: error)
+    }
 }

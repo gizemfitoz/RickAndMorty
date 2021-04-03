@@ -26,9 +26,14 @@ public struct CharactersResponse: Decodable {
         public let origin: Location
         public let location: Location
         public let image: String
-        public let episode: [String]
+        public let episodes: [String]
         public let url: String
         public let created: String
+        
+        enum CodingKeys: String, CodingKey {
+            case id, name, status, species, type, gender, origin, location, image, url, created
+            case episodes = "episode"
+        }
     }
     
     public struct Location: Decodable {
