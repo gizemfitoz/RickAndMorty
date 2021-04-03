@@ -178,10 +178,8 @@
 		1C4BBC532617BF49003A4DC2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1C4BBCB32617EF3B003A4DC2 /* CharacterListCollectionViewCell.swift */,
-				1C4BBCB42617EF3B003A4DC2 /* CharacterListCollectionViewCell.xib */,
-				1CFFABB4261804C9007B9E43 /* CharacterGridCollectionViewCell.xib */,
-				1CFFABC8261807CD007B9E43 /* CharacterGridCollectionViewCell.swift */,
+				1CFFABCD26187C93007B9E43 /* CharacterListCollectionViewCell */,
+				1CFFABCE26187CA3007B9E43 /* CharacterGridCollectionViewCell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -206,6 +204,24 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1CFFABCD26187C93007B9E43 /* CharacterListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1C4BBCB32617EF3B003A4DC2 /* CharacterListCollectionViewCell.swift */,
+				1C4BBCB42617EF3B003A4DC2 /* CharacterListCollectionViewCell.xib */,
+			);
+			name = CharacterListCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		1CFFABCE26187CA3007B9E43 /* CharacterGridCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1CFFABB4261804C9007B9E43 /* CharacterGridCollectionViewCell.xib */,
+				1CFFABC8261807CD007B9E43 /* CharacterGridCollectionViewCell.swift */,
+			);
+			name = CharacterGridCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
