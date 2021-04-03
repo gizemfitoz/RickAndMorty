@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CharacterDetailBusinessLogic: AnyObject {
-    
+    func fetchCharacter()
 }
 
 protocol CharacterDetailDataStore: AnyObject {
@@ -20,4 +20,14 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
     var worker: CharacterDetailWorkingLogic = CharacterDetailWorker()
     var characterId: Int!
 
+    func fetchCharacter() {
+        worker.getCharacter(id: characterId) { [weak self] (response) in
+            // TODO
+            print(response)
+        } onError: {  [weak self] error in
+            // TODO
+            print(error)
+        }
+
+    }
 }

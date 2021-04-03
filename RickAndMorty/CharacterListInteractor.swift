@@ -37,14 +37,14 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
         isPaginating = true
         self.page = self.page + 1
         
-        worker.getCharacters(page: String(page)) { [weak self] (response) in
+        worker.getCharacters(page: String(page)) { [weak self] response in
             guard let self = self else { return }
             self.isPaginating = false
             self.totalPages = response.info.pages
             self.presenter?.presentCharacters(
                 response: CharacterList.Characters.Response(characters: response.results)
             )
-        } onError: { [weak self] (error) in
+        } onError: { [weak self] error in
             guard let self = self else { return }
             self.presenter?.presentError(error: error)
         }
