@@ -16,23 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CharacterList" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feg-dM-NRO">
-                                <rect key="frame" x="155.5" y="428" width="103" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="UKG-50-uN6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dQ4-Hz-BFK">
+                                <rect key="frame" x="8" y="52" width="398" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="10" id="Zds-NZ-ohZ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nxe-uw-h5I" id="MZM-9O-POb"/>
+                                    <outlet property="delegate" destination="nxe-uw-h5I" id="Ydg-xF-2sY"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="acR-sl-ate"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Feg-dM-NRO" firstAttribute="centerX" secondItem="acR-sl-ate" secondAttribute="centerX" id="V6L-Iz-9U6"/>
-                            <constraint firstItem="Feg-dM-NRO" firstAttribute="centerY" secondItem="acR-sl-ate" secondAttribute="centerY" id="xHD-3D-nfC"/>
+                            <constraint firstItem="dQ4-Hz-BFK" firstAttribute="leading" secondItem="acR-sl-ate" secondAttribute="leading" constant="8" id="0cE-74-OOq"/>
+                            <constraint firstItem="dQ4-Hz-BFK" firstAttribute="bottom" secondItem="acR-sl-ate" secondAttribute="bottom" constant="8" id="JRX-pU-nd1"/>
+                            <constraint firstItem="acR-sl-ate" firstAttribute="trailing" secondItem="dQ4-Hz-BFK" secondAttribute="trailing" constant="8" id="bAj-Zr-RPV"/>
+                            <constraint firstItem="dQ4-Hz-BFK" firstAttribute="top" secondItem="acR-sl-ate" secondAttribute="top" constant="8" id="dwS-Y2-kMo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="charactersCollectionView" destination="dQ4-Hz-BFK" id="4YM-SP-ed7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CharacterListCollectionViewCell" id="gTV-IL-0wX" customClass="CharacterListCollectionViewCell" customModule="RickAndMorty" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="313" height="93"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="313" height="93"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h65-YN-SOb">
+                        <rect key="frame" x="281" y="8" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="AW3-Iy-7gA"/>
+                            <constraint firstAttribute="width" constant="24" id="JMX-44-evT"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R6Z-RP-nuC">
+                        <rect key="frame" x="8" y="10" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="IOm-ZX-ny2"/>
+                            <constraint firstAttribute="width" constant="60" id="d7Y-pI-UIk"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prH-cp-j44">
+                        <rect key="frame" x="78" y="8" width="225" height="75"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHN-cM-FSg">
+                                <rect key="frame" x="0.0" y="0.0" width="225" height="24"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="zVR-y1-pmG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBe-WO-CQd">
+                                <rect key="frame" x="0.0" y="27" width="225" height="22.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22.5" id="zhh-Gt-cO4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="16"/>
+                                <color key="textColor" red="0.2784313725" green="0.30588235289999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6re-ka-uQB">
+                                <rect key="frame" x="0.0" y="52.5" width="225" height="22.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22.5" id="3XN-2v-dvJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="16"/>
+                                <color key="textColor" red="0.2784313725" green="0.30588235289999999" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6re-ka-uQB" firstAttribute="leading" secondItem="prH-cp-j44" secondAttribute="leading" id="BzI-VR-e03"/>
+                            <constraint firstItem="QHN-cM-FSg" firstAttribute="leading" secondItem="prH-cp-j44" secondAttribute="leading" id="Dt3-lR-3mE"/>
+                            <constraint firstItem="6re-ka-uQB" firstAttribute="top" secondItem="zBe-WO-CQd" secondAttribute="bottom" constant="3" id="FEL-i4-8xd"/>
+                            <constraint firstAttribute="trailing" secondItem="6re-ka-uQB" secondAttribute="trailing" id="Hdb-cX-hWj"/>
+                            <constraint firstItem="QHN-cM-FSg" firstAttribute="top" secondItem="prH-cp-j44" secondAttribute="top" id="OWd-1x-oI6"/>
+                            <constraint firstItem="zBe-WO-CQd" firstAttribute="top" secondItem="QHN-cM-FSg" secondAttribute="bottom" constant="3" id="TQT-VY-8Jr"/>
+                            <constraint firstAttribute="trailing" secondItem="zBe-WO-CQd" secondAttribute="trailing" id="ZBi-8b-dfA"/>
+                            <constraint firstAttribute="trailing" secondItem="QHN-cM-FSg" secondAttribute="trailing" id="g8j-Wj-eBe"/>
+                            <constraint firstItem="zBe-WO-CQd" firstAttribute="top" secondItem="QHN-cM-FSg" secondAttribute="bottom" constant="3" id="mfn-mk-ee7"/>
+                            <constraint firstAttribute="bottom" secondItem="6re-ka-uQB" secondAttribute="bottom" id="mgX-Tm-7ew"/>
+                            <constraint firstItem="zBe-WO-CQd" firstAttribute="leading" secondItem="prH-cp-j44" secondAttribute="leading" id="to3-YH-XL1"/>
+                            <constraint firstItem="6re-ka-uQB" firstAttribute="top" secondItem="zBe-WO-CQd" secondAttribute="bottom" constant="3" id="vOl-xS-CaR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="h65-YN-SOb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="1ar-Tu-4gR"/>
+                <constraint firstAttribute="bottom" secondItem="prH-cp-j44" secondAttribute="bottom" constant="10" id="2tq-rX-lht"/>
+                <constraint firstAttribute="trailing" secondItem="h65-YN-SOb" secondAttribute="trailing" constant="8" id="3hw-sv-dLt"/>
+                <constraint firstItem="R6Z-RP-nuC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="PGv-EA-gv6"/>
+                <constraint firstItem="R6Z-RP-nuC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="YrU-li-PiR"/>
+                <constraint firstItem="prH-cp-j44" firstAttribute="leading" secondItem="R6Z-RP-nuC" secondAttribute="trailing" constant="10" id="ZjI-8K-lRP"/>
+                <constraint firstAttribute="trailing" secondItem="prH-cp-j44" secondAttribute="trailing" constant="10" id="gqv-Ll-Zu0"/>
+                <constraint firstItem="prH-cp-j44" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="zdg-pW-c8B"/>
+            </constraints>
+            <size key="customSize" width="313" height="186"/>
+            <connections>
+                <outlet property="imageView" destination="R6Z-RP-nuC" id="MVI-od-4v7"/>
+                <outlet property="nameLabel" destination="QHN-cM-FSg" id="5Pa-2v-B0Z"/>
+                <outlet property="speciesLabel" destination="6re-ka-uQB" id="mwG-0X-yJi"/>
+                <outlet property="starImageView" destination="h65-YN-SOb" id="HWb-ok-Ymd"/>
+                <outlet property="statusLabel" destination="zBe-WO-CQd" id="mOo-SD-nxZ"/>
+            </connections>
+            <point key="canvasLocation" x="103.62318840579711" y="116.18303571428571"/>
+        </collectionViewCell>
+    </objects>
+</document>

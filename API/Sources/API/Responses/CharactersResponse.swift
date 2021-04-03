@@ -8,8 +8,8 @@
 import Foundation
 
 public struct CharactersResponse: Decodable {
-    let info: Info
-    let results: [Character]
+    public let info: Info
+    public let results: [Character]
     
     public struct Info: Decodable {
         public var count: Int
@@ -17,22 +17,22 @@ public struct CharactersResponse: Decodable {
     }
     
     public struct Character: Decodable {
-        let id: Int
-        let name: String
-        let status: String
-        let species: String
-        let type: String
-        let gender: String
-        let origin: Location
-        let location: Location
-        let image: String
-        let episode: [String]
-        let url: String
-        let created: String
+        public let id: Int
+        public let name: String
+        public let status: String
+        public let species: String
+        public let type: String
+        public let gender: String
+        public let origin: Location
+        public let location: Location
+        public let image: String
+        public let episode: [String]
+        public let url: String
+        public let created: String
     }
     
     public struct Location: Decodable {
-        let name: String
-        let url: String
+        public let name: String
+        public let url: String
     }
 }
