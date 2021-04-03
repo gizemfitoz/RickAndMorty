@@ -11,6 +11,7 @@ protocol CharacterListDisplayLogic: AnyObject {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel)
     func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel)
     func displayCharacterDetail()
+    func displayLastSelectedItem(viewModel: CharacterList.LastSelectedCharacter.ViewModel)
     func displayLoader(hide: Bool)
     func displayError(error: String)
 }
@@ -20,7 +21,7 @@ final class CharacterListViewController: BaseViewController {
     var interactor: CharacterListBusinessLogic?
     var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
     private var layoutBarButtonItem: UIBarButtonItem?
-    private var characters: [CharacterList.Characters.ViewModel.Character] = []
+    private var characters: [CharacterList.Character] = []
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -49,6 +50,11 @@ final class CharacterListViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         interactor?.fetchCharacters()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        interactor?.fetchLastSelectedItem()
     }
     
     private func setupUI() {
@@ -81,7 +87,7 @@ final class CharacterListViewController: BaseViewController {
 
 extension CharacterListViewController: CharacterListDisplayLogic {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel) {
-        characters.append(contentsOf: viewModel.characters)
+        characters = viewModel.allCharacters
         charactersCollectionView.reloadData()
     }
     
@@ -92,6 +98,11 @@ extension CharacterListViewController: CharacterListDisplayLogic {
     
     func displayCharacterDetail() {
         router?.routeToCharacterDetail()
+    }
+    
+    func displayLastSelectedItem(viewModel: CharacterList.LastSelectedCharacter.ViewModel) {
+        characters[viewModel.index] = viewModel.character
+        charactersCollectionView.reloadItems(at: [IndexPath(item: viewModel.index, section: 0)])
     }
     
     func displayLoader(hide: Bool) {

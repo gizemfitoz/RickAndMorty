@@ -11,23 +11,35 @@ import API
 enum CharacterList {
     enum Characters {
         struct Response {
-            var characters: [CharactersResponse.Character]
+            var pagedCharacters: [Character]
         }
         
         struct ViewModel {
-            var characters: [Character]
-            
-            struct Character {
-                var id: Int
-                var image: String
-                var name: String
-                var status: String
-                var species: String
-                var isFavorited: Bool
-            }
+            var allCharacters: [Character]
         }
     }
     
+    enum LastSelectedCharacter {
+        struct Response {
+            var characterId: Int
+            var isFavorite: Bool
+        }
+        
+        struct ViewModel {
+            var character: Character
+            var index: Int
+        }
+    }
+    
+    struct Character {
+        var id: Int
+        var image: String
+        var name: String
+        var status: String
+        var species: String
+        var isFavorite: Bool
+    }
+
     enum ToggleLayoutType {
         struct Response {
             var type: LayoutType

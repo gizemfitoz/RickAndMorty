@@ -8,9 +8,10 @@
 import Foundation
 
 protocol CharacterListPresentationLogic: AnyObject {
-    func presentCharacters(response: CharacterList.Characters.Response)
+    func presentPagedCharacters(response: CharacterList.Characters.Response)
     func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response)
     func presentCharacterDetail()
+    func presentLastSelectedItem(response: CharacterList.LastSelectedCharacter.Response)
     func presentLoader(hide: Bool)
     func presentError(error: String)
 }
@@ -18,6 +19,15 @@ protocol CharacterListPresentationLogic: AnyObject {
 final class CharacterListPresenter: CharacterListPresentationLogic {
     
     weak var viewController: CharacterListDisplayLogic?
+    var characters: [CharacterList.Character] = [] {
+        didSet {
+            self.charactersIndexDict = self.characters.enumerated()
+                .reduce(into: [:]) { (dict, tuple: (index: Int, character: CharacterList.Character)) in
+                dict[tuple.character.id] = tuple.index
+            }
+        }
+    }
+    var charactersIndexDict: [Int: Int] = [:] // Id:Index
     
     func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response) {
         self.viewController?.displayToggleLayoutType(
@@ -25,23 +35,26 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
         )
     }
     
-    func presentCharacters(response: CharacterList.Characters.Response) {
-        let characters = response.characters.map {
-            CharacterList.Characters.ViewModel.Character(
-                id: $0.id,
-                image: $0.image,
-                name: $0.name,
-                status: $0.status,
-                species: $0.species,
-                isFavorited: true) // TODO update favorite
-        }
+    func presentPagedCharacters(response: CharacterList.Characters.Response) {
+        self.characters.append(contentsOf: response.pagedCharacters)
         
-        let viewModel = CharacterList.Characters.ViewModel(characters: characters)
+        let viewModel = CharacterList.Characters.ViewModel(allCharacters: self.characters)
         viewController?.displayCharacters(viewModel: viewModel)
     }
     
     func presentCharacterDetail() {
         viewController?.displayCharacterDetail()
+    }
+    
+    func presentLastSelectedItem(response: CharacterList.LastSelectedCharacter.Response) {
+        guard let characterIndex = self.charactersIndexDict[response.characterId] else { return }
+        var character = self.characters[characterIndex]
+        character.isFavorite = response.isFavorite
+        
+        viewController?.displayLastSelectedItem(
+            viewModel: CharacterList.LastSelectedCharacter.ViewModel(
+                character: character,
+                index: characterIndex))
     }
     
     func presentLoader(hide: Bool) {

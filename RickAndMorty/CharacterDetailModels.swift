@@ -14,9 +14,11 @@ enum CharacterDetail {
         
         struct Response {
             var character: CharactersResponse.Character
+            var isFavorite: Bool
         }
         
         struct ViewModel {
+            var isFavorite: Bool
             var image: String
             var name: String
             var status: String
@@ -36,6 +38,16 @@ enum CharacterDetail {
         struct ViewModel {
             var lastSeenEpisodeName: String
             var lastSeenEpisodeAirDate: String
+        }
+    }
+    
+    enum Favorite {        
+        struct Response {
+            var isFavorite: Bool
+        }
+        
+        struct ViewModel {
+            var isFavorite: Bool
         }
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol CharacterDetailBusinessLogic: AnyObject {
     func fetchCharacter()
+    func saveOrRemoveFavorite()
 }
 
 protocol CharacterDetailDataStore: AnyObject {
@@ -19,13 +20,16 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
     var presenter: CharacterDetailPresentationLogic?
     var worker: CharacterDetailWorkingLogic = CharacterDetailWorker()
     var characterId: Int!
+    var isFavorite = false
     
     func fetchCharacter() {
         self.presenter?.presentLoader(hide: false)
         worker.getCharacter(id: characterId) { [weak self] response in
             guard let self = self else { return }
+            self.isFavorite = self.worker.isFavorite(id: response.id)
+
             self.presenter?.presentCharacterDetail(
-                response: CharacterDetail.Character.Response(character: response)
+                response: CharacterDetail.Character.Response(character: response, isFavorite: self.isFavorite)
             )
             
             guard let lastEpisodeUrl = response.episodes.last else { return }
@@ -49,5 +53,16 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
             self.presenter?.presentLoader(hide: true)
             self.presenter?.presentError(error: error)
         }
+    }
+    
+    func saveOrRemoveFavorite() {
+        if isFavorite {
+            worker.removeFavorite(id: characterId)
+        } else {
+            worker.saveFavorite(id: characterId)
+        }
+        isFavorite = !isFavorite
+        presenter?.presentFavorite(
+            response: CharacterDetail.Favorite.Response(isFavorite: isFavorite))
     }
 }

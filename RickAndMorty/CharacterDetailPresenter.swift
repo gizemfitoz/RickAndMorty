@@ -11,6 +11,7 @@ import API
 protocol CharacterDetailPresentationLogic: AnyObject {
     func presentCharacterDetail(response: CharacterDetail.Character.Response)
     func presentEpisode(response: CharacterDetail.Episode.Response)
+    func presentFavorite(response: CharacterDetail.Favorite.Response)
     func presentLoader(hide: Bool)
     func presentError(error: String)
 }
@@ -22,6 +23,7 @@ final class CharacterDetailPresenter: CharacterDetailPresentationLogic {
     func presentCharacterDetail(response: CharacterDetail.Character.Response) {
         viewController?.displayCharacterDetail(
             viewModel: CharacterDetail.Character.ViewModel(
+                isFavorite: response.isFavorite,
                 image: response.character.image,
                 name: response.character.name,
                 status: response.character.status,
@@ -37,6 +39,12 @@ final class CharacterDetailPresenter: CharacterDetailPresentationLogic {
             viewModel: CharacterDetail.Episode.ViewModel(
                 lastSeenEpisodeName: response.episode.name,
                 lastSeenEpisodeAirDate: response.episode.airDate))
+    }
+    
+    func presentFavorite(response: CharacterDetail.Favorite.Response) {
+        viewController?.displayFavorite(
+            viewModel: CharacterDetail.Favorite.ViewModel(
+                isFavorite: response.isFavorite))
     }
     
     func presentLoader(hide: Bool) {

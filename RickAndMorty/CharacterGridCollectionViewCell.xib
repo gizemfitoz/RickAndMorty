@@ -94,10 +94,10 @@
             </constraints>
             <size key="customSize" width="313" height="186"/>
             <connections>
+                <outlet property="favoriteImageView" destination="fXy-RV-cdK" id="Bup-U4-jxR"/>
                 <outlet property="imageView" destination="Rvd-M6-8oe" id="DTP-sb-Zyx"/>
                 <outlet property="nameLabel" destination="mtg-1H-o1Q" id="CFB-Bc-KBS"/>
                 <outlet property="speciesLabel" destination="Epy-4K-s3u" id="BRX-oM-mMn"/>
-                <outlet property="starImageView" destination="fXy-RV-cdK" id="dkh-tJ-Cnl"/>
                 <outlet property="statusLabel" destination="JAZ-Xl-oJM" id="bvu-9J-8Nd"/>
             </connections>
             <point key="canvasLocation" x="103.62318840579711" y="116.18303571428571"/>

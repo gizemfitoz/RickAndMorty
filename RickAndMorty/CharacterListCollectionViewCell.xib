@@ -96,10 +96,10 @@
             </constraints>
             <size key="customSize" width="313" height="186"/>
             <connections>
+                <outlet property="favoriteImageView" destination="h65-YN-SOb" id="s2y-MT-MZE"/>
                 <outlet property="imageView" destination="R6Z-RP-nuC" id="MVI-od-4v7"/>
                 <outlet property="nameLabel" destination="QHN-cM-FSg" id="5Pa-2v-B0Z"/>
                 <outlet property="speciesLabel" destination="6re-ka-uQB" id="mwG-0X-yJi"/>
-                <outlet property="starImageView" destination="h65-YN-SOb" id="HWb-ok-Ymd"/>
                 <outlet property="statusLabel" destination="zBe-WO-CQd" id="mOo-SD-nxZ"/>
             </connections>
             <point key="canvasLocation" x="103.62318840579711" y="116.18303571428571"/>

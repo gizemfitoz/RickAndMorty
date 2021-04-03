@@ -12,6 +12,7 @@ protocol CharacterListWorkingLogic: AnyObject {
     func getCharacters(page: String,
                        onSuccess: @escaping (CharactersResponse) -> Void,
                        onError: @escaping (String) -> Void)
+    func isFavorite(id: Int) -> Bool
 }
 
 final class CharacterListWorker: CharacterListWorkingLogic {
@@ -19,5 +20,11 @@ final class CharacterListWorker: CharacterListWorkingLogic {
                        onSuccess: @escaping (CharactersResponse) -> Void,
                        onError: @escaping (String) -> Void) {
         API.getCharacters(page: page, onSuccess: onSuccess, onError: onError)
+    }
+    
+    func isFavorite(id: Int) -> Bool {
+        let defaults = UserDefaults.standard
+        let favorites = defaults.array(forKey: "favorites") as? [Int] ?? [Int]()
+        return favorites.contains(id)
     }
 }

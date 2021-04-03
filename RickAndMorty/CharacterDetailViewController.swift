@@ -11,11 +11,13 @@ import SDWebImage
 protocol CharacterDetailDisplayLogic: AnyObject {
     func displayCharacterDetail(viewModel: CharacterDetail.Character.ViewModel)
     func displayEpisode(viewModel: CharacterDetail.Episode.ViewModel)
+    func displayFavorite(viewModel: CharacterDetail.Favorite.ViewModel)
     func displayLoader(hide: Bool)
     func displayError(error: String)
 }
 
 final class CharacterDetailViewController: BaseViewController {
+    @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -57,10 +59,15 @@ final class CharacterDetailViewController: BaseViewController {
         super.viewDidLoad()
         interactor?.fetchCharacter()
     }
+    
+    @IBAction func favoriteButtonClicked(_ sender: Any) {
+        interactor?.saveOrRemoveFavorite()
+    }
 }
 
 extension CharacterDetailViewController: CharacterDetailDisplayLogic {
     func displayCharacterDetail(viewModel: CharacterDetail.Character.ViewModel) {
+        setFavoriteImageView(isFavorite: viewModel.isFavorite)
         characterImageView.sd_setImage(with: URL(string: viewModel.image), completed: nil)
         nameLabel.text = viewModel.name
         statusLabel.text = viewModel.status
@@ -74,6 +81,15 @@ extension CharacterDetailViewController: CharacterDetailDisplayLogic {
         episodeStackView.isHidden = false
         lastSeenEpisodeNameLabel.text = viewModel.lastSeenEpisodeName
         lastSeenEpisodeAirDateLabel.text = viewModel.lastSeenEpisodeAirDate
+    }
+    
+    func displayFavorite(viewModel: CharacterDetail.Favorite.ViewModel) {
+        setFavoriteImageView(isFavorite: viewModel.isFavorite)
+    }
+    
+    private func setFavoriteImageView(isFavorite: Bool) {
+        let named = isFavorite ? "star.fill" : "star"
+        favoriteImageView.image = UIImage(systemName: named)
     }
     
     func displayLoader(hide: Bool) {

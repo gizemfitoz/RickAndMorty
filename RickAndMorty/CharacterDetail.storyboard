@@ -237,13 +237,36 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V9H-eW-Ryl">
+                                                <rect key="frame" x="352" y="38" width="24" height="24"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="0dr-pk-3eo"/>
+                                                    <constraint firstAttribute="height" constant="24" id="JbU-J1-dR6"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAq-gM-K1n">
+                                                <rect key="frame" x="334" y="20" width="60" height="60"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="UiG-Em-sAM"/>
+                                                    <constraint firstAttribute="width" constant="60" id="XQj-9l-PCk"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="favoriteButtonClicked:" destination="nxe-uw-h5I" eventType="touchUpInside" id="sAK-NX-aOM"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="V9H-eW-Ryl" secondAttribute="trailing" constant="38" id="Dsl-gb-a9T"/>
+                                            <constraint firstItem="oAq-gM-K1n" firstAttribute="top" secondItem="1Z0-QR-Mc8" secondAttribute="top" constant="20" id="GIo-B3-0CH"/>
                                             <constraint firstItem="n9E-ru-OJe" firstAttribute="top" secondItem="VJb-TQ-Alf" secondAttribute="bottom" constant="30" id="J1Z-JM-C8u"/>
                                             <constraint firstItem="VJb-TQ-Alf" firstAttribute="top" secondItem="1Z0-QR-Mc8" secondAttribute="top" constant="10" id="RTm-nR-BT7"/>
+                                            <constraint firstItem="V9H-eW-Ryl" firstAttribute="top" secondItem="1Z0-QR-Mc8" secondAttribute="top" constant="38" id="Yn8-9c-xUc"/>
                                             <constraint firstItem="n9E-ru-OJe" firstAttribute="leading" secondItem="1Z0-QR-Mc8" secondAttribute="leading" constant="10" id="am0-bc-qEK"/>
                                             <constraint firstAttribute="trailing" secondItem="n9E-ru-OJe" secondAttribute="trailing" constant="10" id="iXd-bL-FXg"/>
+                                            <constraint firstAttribute="trailing" secondItem="oAq-gM-K1n" secondAttribute="trailing" constant="20" id="yGM-91-6LY"/>
                                             <constraint firstItem="VJb-TQ-Alf" firstAttribute="centerX" secondItem="1Z0-QR-Mc8" secondAttribute="centerX" id="zsZ-Lb-ajW"/>
                                         </constraints>
                                     </view>
@@ -275,6 +298,7 @@
                     <connections>
                         <outlet property="characterImageView" destination="VJb-TQ-Alf" id="OUE-EU-Qm9"/>
                         <outlet property="episodeStackView" destination="2qC-Rc-lxj" id="TjQ-7u-auR"/>
+                        <outlet property="favoriteImageView" destination="V9H-eW-Ryl" id="jXD-pR-bCV"/>
                         <outlet property="genderLabel" destination="dYm-ln-6q1" id="K6a-vm-hX9"/>
                         <outlet property="lastKnownLocationLabel" destination="tbp-EA-d06" id="Vkm-NE-L8u"/>
                         <outlet property="lastSeenEpisodeAirDateLabel" destination="lgl-J7-7AI" id="Hlx-kb-Dl5"/>

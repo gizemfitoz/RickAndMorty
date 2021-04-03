@@ -10,7 +10,7 @@ import SDWebImage
 
 class CharacterListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var starImageView: UIImageView!
+    @IBOutlet weak var favoriteImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var speciesLabel: UILabel!
@@ -20,11 +20,16 @@ class CharacterListCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 10
     }
     
-    func set(viewModel: CharacterList.Characters.ViewModel.Character) {
+    func set(viewModel: CharacterList.Character) {
         imageView.sd_setImage(with: URL(string: viewModel.image), completed: nil)
-        starImageView.image = viewModel.isFavorited ? UIImage(systemName: "star.fill") : nil
+        setFavoriteImageView(isFavorite: viewModel.isFavorite)
         nameLabel.text = viewModel.name
         statusLabel.text = viewModel.status
         speciesLabel.text = viewModel.species
+    }
+    
+    private func setFavoriteImageView(isFavorite: Bool) {
+        let named = isFavorite ? "star.fill" : "star"
+        favoriteImageView.image = UIImage(systemName: named)
     }
 }

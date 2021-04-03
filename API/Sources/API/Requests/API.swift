@@ -13,7 +13,7 @@ public enum API {
             .validate()
             .responseDecodable(of: CharactersResponse.self) { response in
                 guard let charactersResponse = response.value else {
-                    onError("Error fething the characters!")
+                    onError("Error fething the characters page #\(page)!")
                     return
                 }
                 onSuccess(charactersResponse)
