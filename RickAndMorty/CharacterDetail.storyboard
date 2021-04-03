@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEj-Cn-Kry">
-                                <rect key="frame" x="185" y="428" width="44" height="50"/>
+                                <rect key="frame" x="185" y="403.5" width="44" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="py4-8V-pGN"/>
                                 </constraints>
@@ -33,6 +33,8 @@
                             <constraint firstItem="pEj-Cn-Kry" firstAttribute="centerY" secondItem="acR-sl-ate" secondAttribute="centerY" id="VNB-2o-vtJ"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZo-gs-e4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

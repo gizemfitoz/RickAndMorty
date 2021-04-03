@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Extensions
 
 protocol CharacterDetailDisplayLogic: AnyObject {
     
 }
 
-final class CharacterDetailViewController: UIViewController {
+final class CharacterDetailViewController: UIViewController, StoryboardLoadable {
     
     var interactor: CharacterDetailBusinessLogic?
     var router: (CharacterDetailRoutingLogic & CharacterDetailDataPassing)?

@@ -11,11 +11,13 @@ import API
 protocol CharacterListBusinessLogic: AnyObject {
     func getCharacters()
     func toggleLayoutType()
+    func fetchCharacterDetail(id: Int)
 }
 
 protocol CharacterListDataStore: AnyObject {
     var page: Int! { get set }
     var layoutType: CharacterList.ToggleLayoutType.LayoutType! { get set }
+    var selectedCharacterId: Int? { get set }
 }
 
 final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDataStore {
@@ -25,6 +27,7 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
     var totalPages: Int = 0
     var layoutType: CharacterList.ToggleLayoutType.LayoutType! = .list
     var isPaginating = false
+    var selectedCharacterId: Int?
     
     func getCharacters() {
         if isPaginating || (totalPages != 0 && self.page == totalPages) {
@@ -56,5 +59,10 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
         self.presenter?.presentToggleLayoutType(
             response: CharacterList.ToggleLayoutType.Response(type: layoutType)
         )
+    }
+    
+    func fetchCharacterDetail(id: Int) {
+        selectedCharacterId = id
+        presenter?.presentCharacterDetail()
     }
 }

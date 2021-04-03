@@ -12,6 +12,7 @@ protocol CharacterListDisplayLogic: AnyObject {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel)
     func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel)
     func displayError(error: String)
+    func displayCharacterDetail()
 }
 
 final class CharacterListViewController: UIViewController, StoryboardLoadable {
@@ -94,6 +95,10 @@ extension CharacterListViewController: CharacterListDisplayLogic {
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    func displayCharacterDetail() {
+        router?.routeToCharacterDetail()
+    }
 }
 
 extension CharacterListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -135,5 +140,9 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
         if position > charactersCollectionView.contentSize.height - 100 - scrollView.frame.size.height {
             interactor?.getCharacters()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        interactor?.fetchCharacterDetail(id: characters[indexPath.row].id)
     }
 }

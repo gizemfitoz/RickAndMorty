@@ -18,6 +18,7 @@ enum CharacterList {
             var characters: [Character]
             
             struct Character {
+                var id: Int
                 var image: String
                 var name: String
                 var status: String

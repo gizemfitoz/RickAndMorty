@@ -11,6 +11,7 @@ protocol CharacterListPresentationLogic: AnyObject {
     func presentCharacters(response: CharacterList.Characters.Response)
     func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response)
     func presentError(error: String)
+    func presentCharacterDetail()
 }
 
 final class CharacterListPresenter: CharacterListPresentationLogic {
@@ -26,6 +27,7 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
     func presentCharacters(response: CharacterList.Characters.Response) {
         let characters = response.characters.map {
             CharacterList.Characters.ViewModel.Character(
+                id: $0.id,
                 image: $0.image,
                 name: $0.name,
                 status: $0.status,
@@ -39,5 +41,9 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
     
     func presentError(error: String) {
         viewController?.displayError(error: error)
+    }
+    
+    func presentCharacterDetail() {
+        viewController?.displayCharacterDetail()
     }
 }
