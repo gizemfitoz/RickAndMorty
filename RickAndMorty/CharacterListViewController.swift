@@ -48,7 +48,7 @@ final class CharacterListViewController: UIViewController, StoryboardLoadable {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        interactor?.getCharacters()
+        interactor?.fetchCharacters()
     }
     
     private func setupUI() {
@@ -70,7 +70,7 @@ final class CharacterListViewController: UIViewController, StoryboardLoadable {
     }
     
     @objc private func layoutBarButtonItemTapped(sender: UIBarButtonItem) {
-        interactor?.toggleLayoutType()
+        interactor?.fetchLayoutType()
     }
     
     private func setLayoutBarButtonItemImage(_ image: UIImage?) {
@@ -138,7 +138,7 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > charactersCollectionView.contentSize.height - 100 - scrollView.frame.size.height {
-            interactor?.getCharacters()
+            interactor?.fetchCharacters()
         }
     }
     

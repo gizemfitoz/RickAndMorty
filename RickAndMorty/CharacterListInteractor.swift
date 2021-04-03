@@ -9,8 +9,8 @@ import Foundation
 import API
 
 protocol CharacterListBusinessLogic: AnyObject {
-    func getCharacters()
-    func toggleLayoutType()
+    func fetchCharacters()
+    func fetchLayoutType()
     func fetchCharacterDetail(id: Int)
 }
 
@@ -29,7 +29,7 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
     var isPaginating = false
     var selectedCharacterId: Int?
     
-    func getCharacters() {
+    func fetchCharacters() {
         if isPaginating || (totalPages != 0 && self.page == totalPages) {
             return
         }
@@ -50,7 +50,7 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
         }
     }
     
-    func toggleLayoutType() {
+    func fetchLayoutType() {
         if layoutType == .list {
             layoutType = .grid
         } else {
