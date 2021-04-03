@@ -10,6 +10,7 @@ import Foundation
 protocol CharacterListPresentationLogic: AnyObject {
     func presentCharacters(response: CharacterList.Characters.Response)
     func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response)
+    func presentError(error: String)
 }
 
 final class CharacterListPresenter: CharacterListPresentationLogic {
@@ -34,5 +35,9 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
         
         let viewModel = CharacterList.Characters.ViewModel(characters: characters)
         viewController?.displayCharacters(viewModel: viewModel)
+    }
+    
+    func presentError(error: String) {
+        viewController?.displayError(error: error)
     }
 }

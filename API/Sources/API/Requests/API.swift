@@ -5,10 +5,9 @@ public enum API {
     public static func getCharacters(page: String,
                           onSuccess: @escaping (CharactersResponse) -> Void,
                           onError: @escaping (String) -> Void) {
-        let url = "https://rickandmortyapi.com/api/character"
+        let url = "https://rickandmortyapi.com/api/character?page=\(page)"
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = "GET"
-        urlRequest.setValue(page, forHTTPHeaderField: "page")
         
         AF.request(urlRequest)
             .validate()

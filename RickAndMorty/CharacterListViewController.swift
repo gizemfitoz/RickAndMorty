@@ -11,6 +11,7 @@ import Extensions
 protocol CharacterListDisplayLogic: AnyObject {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel)
     func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel)
+    func displayError(error: String)
 }
 
 final class CharacterListViewController: UIViewController, StoryboardLoadable {
@@ -79,13 +80,19 @@ final class CharacterListViewController: UIViewController, StoryboardLoadable {
 
 extension CharacterListViewController: CharacterListDisplayLogic {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel) {
-        characters = viewModel.characters
+        characters.append(contentsOf: viewModel.characters)
         charactersCollectionView.reloadData()
     }
     
     func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel) {
         setLayoutBarButtonItemImage(viewModel.type.image)
         charactersCollectionView.reloadData()
+    }
+    
+    func displayError(error: String) {
+        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -120,6 +127,13 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
             return CGSize(
                 width: collectionView.frame.size.width,
                 height: CharacterList.ToggleLayoutType.LayoutType.list.rowHeight)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > charactersCollectionView.contentSize.height - 100 - scrollView.frame.size.height {
+            interactor?.getCharacters()
         }
     }
 }
