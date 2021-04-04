@@ -31,8 +31,8 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
     var isPaginating = false
     var page: Int! = 0
     var totalPages: Int = 0
-    var filterName = ""
-    var filterStatus = ""
+    private var filterName = ""
+    private var filterStatus = ""
     
     func fetchCharacters() {
         if isPaginating || (totalPages != 0 && self.page == totalPages) {

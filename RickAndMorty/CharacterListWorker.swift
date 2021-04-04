@@ -32,7 +32,7 @@ final class CharacterListWorker: CharacterListWorkingLogic {
     
     func isFavorite(id: Int) -> Bool {
         let defaults = UserDefaults.standard
-        let favorites = defaults.array(forKey: "favorites") as? [Int] ?? [Int]()
+        let favorites = defaults.array(forKey: Constants.favoritesUserDefaultsKey) as? [Int] ?? [Int]()
         return favorites.contains(id)
     }
 }

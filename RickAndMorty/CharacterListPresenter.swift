@@ -28,7 +28,7 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
                 }
         }
     }
-    var charactersIndexDict: [Int: Int] = [:] // Id:Index
+    var charactersIndexDict: [Int: Int] = [:] // Id: Index
     
     func presentLayoutType(response: CharacterList.ToggleLayoutType.Response) {
         self.viewController?.displayLayoutType(

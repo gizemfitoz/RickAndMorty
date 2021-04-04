@@ -89,8 +89,7 @@ extension CharacterDetailViewController: CharacterDetailDisplayLogic {
     }
     
     private func setFavoriteImageView(isFavorite: Bool) {
-        let named = isFavorite ? "star.fill" : "star"
-        favoriteImageView.image = UIImage(systemName: named)
+        favoriteImageView.image = isFavorite ? Constants.favoriteImage : Constants.notFavoriteImage
     }
     
     func displayLoader(hide: Bool) {

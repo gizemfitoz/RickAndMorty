@@ -20,10 +20,10 @@ final class CharacterListViewController: BaseViewController {
     @IBOutlet var charactersCollectionView: UICollectionView!
     var interactor: CharacterListBusinessLogic?
     var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
-    private var layoutBarButtonItem: UIBarButtonItem?
     var characters: [CharacterList.Character] = []
     var searchController = UISearchController()
-    
+    private var layoutBarButtonItem: UIBarButtonItem?
+            
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -60,13 +60,9 @@ final class CharacterListViewController: BaseViewController {
     }
     
     private func setupUI() {
-        charactersCollectionView.register(
-            UINib(nibName: "CharacterListCollectionViewCell", bundle: .main),
-            forCellWithReuseIdentifier: "CharacterListCollectionViewCell")
-        charactersCollectionView.register(
-            UINib(nibName: "CharacterGridCollectionViewCell", bundle: .main),
-            forCellWithReuseIdentifier: "CharacterGridCollectionViewCell")
-        charactersCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
+        charactersCollectionView.register(cell: Constants.charcterListCell)
+        charactersCollectionView.register(cell: Constants.charcterLGridCell)
+        charactersCollectionView.contentInset = Constants.characterCollectionViewContentInset
         
         addLayoutBarButtonItem()
         setLayoutBarButtonItemImage(CharacterList.ToggleLayoutType.LayoutType.list.image)
@@ -78,7 +74,7 @@ final class CharacterListViewController: BaseViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.returnKeyType = .done
-        searchController.searchBar.placeholder = "Search Character..."
+        searchController.searchBar.placeholder = Constants.searchPlaceholderText
         navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false

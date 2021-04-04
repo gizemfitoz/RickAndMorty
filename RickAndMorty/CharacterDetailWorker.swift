@@ -59,11 +59,11 @@ final class CharacterDetailWorker: CharacterDetailWorkingLogic {
     
     private func getFavorites() -> [Int] {
         let defaults = UserDefaults.standard
-        return defaults.array(forKey: "favorites") as? [Int] ?? [Int]()
+        return defaults.array(forKey: Constants.favoritesUserDefaultsKey) as? [Int] ?? [Int]()
     }
     
     private func save(favorites: [Int]) {
         let defaults = UserDefaults.standard
-        defaults.set(favorites, forKey: "favorites")
+        defaults.set(favorites, forKey: Constants.favoritesUserDefaultsKey)
     }
 }

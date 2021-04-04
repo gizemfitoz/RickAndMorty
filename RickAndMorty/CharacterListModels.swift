@@ -72,18 +72,18 @@ enum CharacterList {
             var image: UIImage? {
                 switch self {
                 case .list:
-                    return UIImage(systemName: "rectangle.grid.1x2")
+                    return Constants.listLayoutImage
                 case .grid:
-                    return UIImage(systemName: "rectangle.grid.2x2")
+                    return Constants.gridLayoutImage
                 }
             }
             
             var rowHeight: CGFloat {
                 switch self {
                 case .list:
-                    return 93
+                    return Constants.listRowHeight
                 case .grid:
-                    return 165
+                    return Constants.gridRowHeight
                 }
             }
         }

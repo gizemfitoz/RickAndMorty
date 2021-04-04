@@ -10,7 +10,7 @@ import UIKit
 extension CharacterListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if characters.isEmpty {
-            collectionView.setEmptyMessage("No characters")
+            collectionView.setEmptyMessage(Constants.noCharactersMessage)
         } else {
             collectionView.restore()
         }
@@ -20,12 +20,7 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let layoutType = router?.dataStore?.layoutType ?? .list
         
-        var identifier = ""
-        if layoutType == .list {
-            identifier = "CharacterListCollectionViewCell"
-        } else {
-            identifier = "CharacterGridCollectionViewCell"
-        }
+        let identifier = layoutType == .list ? Constants.charcterListCell : Constants.charcterLGridCell
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? CharacterListCollectionViewCell else {
             return UICollectionViewCell()
         }

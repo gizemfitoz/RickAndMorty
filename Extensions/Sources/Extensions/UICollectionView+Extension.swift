@@ -8,6 +8,10 @@
 import UIKit
 
 public extension UICollectionView {
+    func register(cell: String) {
+        self.register(UINib(nibName: cell, bundle: .main), forCellWithReuseIdentifier: cell)
+    }
+    
     func setEmptyMessage(_ message: String) {
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
