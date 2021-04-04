@@ -13,7 +13,6 @@ protocol CharacterListDisplayLogic: AnyObject {
     func displayCharacterDetail()
     func displayLastSelectedItem(viewModel: CharacterList.LastSelectedCharacter.ViewModel)
     func displayLoader(hide: Bool)
-    func displayError(error: String)
 }
 
 final class CharacterListViewController: BaseViewController {
@@ -119,9 +118,5 @@ extension CharacterListViewController: CharacterListDisplayLogic {
     
     func displayLoader(hide: Bool) {
         hide ? hideLoadingView() : showLoadingView()
-    }
-    
-    func displayError(error: String) {
-        showError(error: error)
     }
 }

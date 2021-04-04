@@ -14,7 +14,6 @@ protocol CharacterListPresentationLogic: AnyObject {
     func presentLastSelectedItem(response: CharacterList.LastSelectedCharacter.Response)
     func clearCharacters()
     func presentLoader(hide: Bool)
-    func presentError(error: String)
 }
 
 final class CharacterListPresenter: CharacterListPresentationLogic {
@@ -66,9 +65,5 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
     
     func presentLoader(hide: Bool) {
         viewController?.displayLoader(hide: hide)
-    }
-    
-    func presentError(error: String) {
-        viewController?.displayError(error: error)
     }
 }
