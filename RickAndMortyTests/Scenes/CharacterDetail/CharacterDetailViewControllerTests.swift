@@ -26,41 +26,39 @@ class CharacterDetailViewControllerTests: XCTestCase {
     
     func testFetchCharacter() {
         // Given
-        interactor.characterId = 1
+        interactor.characterId = TestConstants.characterId
         // Then
         viewController.viewDidLoad()
         // Then
         XCTAssertEqual(interactor.character?.id, 1)
-        XCTAssertEqual(interactor.character?.name, "Rick Sanchez")
-        XCTAssertEqual(interactor.character?.episodes.count, 41)
+        XCTAssertEqual(interactor.character?.name, TestConstants.characterName)
+        XCTAssertEqual(interactor.character?.episodes.count, TestConstants.characterEpisodesCount)
         XCTAssertTrue(presenter.presentCharacterDetailCalled)
     }
     
     func testFavoriteButtonClickedWhenCurrentStateIsFavorite() {
         // Given
-        let id = 1
-        interactor.characterId = id
-        interactor.worker.saveFavorite(id: id)
+        interactor.characterId = TestConstants.characterId
+        interactor.worker.saveFavorite(id: TestConstants.characterId)
         interactor.isFavorite = true
         // When
         viewController.favoriteButtonClicked(UIButton())
         // Then
         XCTAssertFalse(interactor.isFavorite)
-        XCTAssertFalse(interactor.worker.isFavorite(id: id))
+        XCTAssertFalse(interactor.worker.isFavorite(id: TestConstants.characterId))
         XCTAssertTrue(presenter.presentFavoriteCalled)
     }
     
     func testFavoriteButtonClickedWhenCurrentStateIsNotFavorite() {
         // Given
-        let id = 1
-        interactor.characterId = id
-        interactor.worker.removeFavorite(id: id)
+        interactor.characterId = TestConstants.characterId
+        interactor.worker.removeFavorite(id: TestConstants.characterId)
         interactor.isFavorite = false
         // When
         viewController.favoriteButtonClicked(UIButton())
         // Then
         XCTAssertTrue(interactor.isFavorite)
-        XCTAssertTrue(interactor.worker.isFavorite(id: id))
+        XCTAssertTrue(interactor.worker.isFavorite(id: TestConstants.characterId))
         XCTAssertTrue(presenter.presentFavoriteCalled)
     }
     
@@ -69,30 +67,31 @@ class CharacterDetailViewControllerTests: XCTestCase {
         viewController.displayCharacterDetail(viewModel: CharacterDetail.Character.ViewModel(
                                                 isFavorite: false,
                                                 image: "",
-                                                name: "Rick Sanchez",
-                                                status: "Alive",
-                                                species: "Human",
-                                                gender: "Male",
-                                                numberOfEpisodes: "41",
-                                                originLocationName:  "Earth (C-137)",
-                                                lastKnownLocationName: "Earth (Replacement Dimension)"))
+                                                name: TestConstants.characterName,
+                                                status: TestConstants.characterStatus,
+                                                species: TestConstants.characterSpecies,
+                                                gender: TestConstants.characterGender,
+                                                numberOfEpisodes: "\(TestConstants.characterEpisodesCount)",
+                                                originLocationName: TestConstants.characterOriginLocationName,
+                                                lastKnownLocationName: TestConstants.characterLastKnownLocationName))
         // Then
-        XCTAssertEqual(viewController.nameLabel.text, "Rick Sanchez")
-        XCTAssertEqual(viewController.statusLabel.text, "Alive")
-        XCTAssertEqual(viewController.speciesLabel.text, "Human")
-        XCTAssertEqual(viewController.genderLabel.text, "Male")
-        XCTAssertEqual(viewController.numberOfEpisodesLabel.text, "41")
-        XCTAssertEqual(viewController.originLocationNameLabel.text, "Earth (C-137)")
+        XCTAssertEqual(viewController.nameLabel.text, TestConstants.characterName)
+        XCTAssertEqual(viewController.statusLabel.text, TestConstants.characterStatus)
+        XCTAssertEqual(viewController.speciesLabel.text, TestConstants.characterSpecies)
+        XCTAssertEqual(viewController.genderLabel.text, TestConstants.characterGender)
+        XCTAssertEqual(viewController.numberOfEpisodesLabel.text, "\(TestConstants.characterEpisodesCount)")
+        XCTAssertEqual(viewController.originLocationNameLabel.text, TestConstants.characterOriginLocationName)
+        XCTAssertEqual(viewController.lastKnownLocationLabel.text, TestConstants.characterLastKnownLocationName)
     }
     
     func testDisplayEpisode() {
         // When
         viewController.displayEpisode(viewModel: CharacterDetail.Episode.ViewModel(
-                                        lastSeenEpisodeName: "Star Mort: Rickturn of the Jerri",
-                                        lastSeenEpisodeAirDate: "May 31, 2020"))
+                                        lastSeenEpisodeName: TestConstants.episodeName,
+                                        lastSeenEpisodeAirDate: TestConstants.episodeAirDate))
         // Then
         XCTAssertFalse(viewController.episodeStackView.isHidden)
-        XCTAssertEqual(viewController.lastSeenEpisodeNameLabel.text, "Star Mort: Rickturn of the Jerri")
-        XCTAssertEqual(viewController.lastSeenEpisodeAirDateLabel.text, "May 31, 2020")
+        XCTAssertEqual(viewController.lastSeenEpisodeNameLabel.text, TestConstants.episodeName)
+        XCTAssertEqual(viewController.lastSeenEpisodeAirDateLabel.text, TestConstants.episodeAirDate)
     }
 }

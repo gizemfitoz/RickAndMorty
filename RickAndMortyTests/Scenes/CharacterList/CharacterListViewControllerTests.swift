@@ -71,9 +71,9 @@ final class CharacterListViewControllerTests: XCTestCase {
             cellForItemAt: IndexPath(row: 0, section: 0)
         ) as? CharacterListCollectionViewCell
         // Then
-        XCTAssertEqual(cell?.nameLabel.text, "Rick Sanchez")
+        XCTAssertEqual(cell?.nameLabel.text, TestConstants.characterName)
         XCTAssertEqual(cell?.statusLabel.text, CharacterList.Character.StatusType.alive.rawValue.capitalized)
-        XCTAssertEqual(cell?.speciesLabel.text, "Human")
+        XCTAssertEqual(cell?.speciesLabel.text, TestConstants.characterSpecies)
     }
     
     func testCharactersCollectionViewCellWhenLayoutTypeIsGrid() {
@@ -86,17 +86,17 @@ final class CharacterListViewControllerTests: XCTestCase {
             cellForItemAt: IndexPath(row: 0, section: 0)
         ) as? CharacterGridCollectionViewCell
         // Then
-        XCTAssertEqual(cell?.nameLabel.text, "Rick Sanchez")
+        XCTAssertEqual(cell?.nameLabel.text, TestConstants.characterName)
         XCTAssertEqual(cell?.statusLabel.text, CharacterList.Character.StatusType.alive.rawValue.capitalized)
-        XCTAssertEqual(cell?.speciesLabel.text, "Human")
+        XCTAssertEqual(cell?.speciesLabel.text, TestConstants.characterSpecies)
     }
     
     private func getCharacter() -> CharacterList.Character {
-        return CharacterList.Character(id: 1,
+        return CharacterList.Character(id: TestConstants.characterId,
                                        image: "",
-                                       name: "Rick Sanchez",
+                                       name: TestConstants.characterName,
                                        status: .alive,
-                                       species: "Human",
+                                       species: TestConstants.characterSpecies,
                                        isFavorite: false)
     }
     
@@ -107,7 +107,7 @@ final class CharacterListViewControllerTests: XCTestCase {
         viewController.collectionView(viewController.charactersCollectionView,
                                       didSelectItemAt: IndexPath(row: 0, section: 0))
         // Then
-        XCTAssertEqual(router.dataStore?.selectedCharacterId, 1)
+        XCTAssertEqual(router.dataStore?.selectedCharacterId, TestConstants.characterId)
         XCTAssertTrue(presenter.presentCharacterDetailCalled)
     }
     

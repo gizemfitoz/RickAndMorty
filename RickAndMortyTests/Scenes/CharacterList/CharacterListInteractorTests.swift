@@ -29,7 +29,7 @@ final class CharacterListInteractorTests: XCTestCase {
         interactor.fetchCharacters()
         // Then
         XCTAssertEqual(interactor.page, 1)
-        XCTAssertEqual(interactor.totalPages, 34)
+        XCTAssertEqual(interactor.totalPages, TestConstants.totalPages)
         XCTAssertFalse(interactor.isPaginating)
         XCTAssertTrue(presenter.presentPagedCharactersCalled)
         XCTAssertTrue(presenter.presentLoaderCalled)
@@ -51,12 +51,12 @@ final class CharacterListInteractorTests: XCTestCase {
     
     func testFetchCharactersWhenLastPage() {
         // Given
-        interactor.totalPages = 34
-        interactor.page = 34
+        interactor.totalPages = TestConstants.totalPages
+        interactor.page = TestConstants.totalPages
         // When
         interactor.fetchCharacters()
         // Then
-        XCTAssertEqual(interactor.page, 34)
+        XCTAssertEqual(interactor.page, TestConstants.totalPages)
         XCTAssertFalse(presenter.presentLoaderCalled)
     }
     

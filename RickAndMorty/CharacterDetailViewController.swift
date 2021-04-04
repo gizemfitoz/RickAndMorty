@@ -75,6 +75,7 @@ extension CharacterDetailViewController: CharacterDetailDisplayLogic {
         genderLabel.text = viewModel.gender
         numberOfEpisodesLabel.text = viewModel.numberOfEpisodes
         originLocationNameLabel.text = viewModel.originLocationName
+        lastKnownLocationLabel.text = viewModel.lastKnownLocationName
     }
     
     func displayEpisode(viewModel: CharacterDetail.Episode.ViewModel) {

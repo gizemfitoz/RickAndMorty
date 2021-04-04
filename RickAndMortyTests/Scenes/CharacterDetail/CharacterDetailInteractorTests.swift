@@ -27,12 +27,13 @@ class CharacterDetailInteractorTests: XCTestCase {
         // When
         interactor.fetchCharacter()
         // Then
-        XCTAssertEqual(interactor.character?.name, "Rick Sanchez")
-        XCTAssertEqual(interactor.character?.status, "Alive")
-        XCTAssertEqual(interactor.character?.species, "Human")
-        XCTAssertEqual(interactor.character?.gender, "Male")
-        XCTAssertEqual(interactor.character?.episodes.count, 41)
-        XCTAssertEqual(interactor.character?.origin.name, "Earth (C-137)")
+        XCTAssertEqual(interactor.character?.name, TestConstants.characterName)
+        XCTAssertEqual(interactor.character?.status, TestConstants.characterStatus)
+        XCTAssertEqual(interactor.character?.species, TestConstants.characterSpecies)
+        XCTAssertEqual(interactor.character?.gender, TestConstants.characterGender)
+        XCTAssertEqual(interactor.character?.episodes.count, TestConstants.characterEpisodesCount)
+        XCTAssertEqual(interactor.character?.origin.name, TestConstants.characterOriginLocationName)
+        XCTAssertEqual(interactor.character?.location.name, TestConstants.characterLastKnownLocationName)
         XCTAssertTrue(presenter.presentCharacterDetailCalled)
     }
     
@@ -50,10 +51,10 @@ class CharacterDetailInteractorTests: XCTestCase {
     
     func testFetchEpisode() {
         // When
-        interactor.fetchEpisode(url: "https://rickandmortyapi.com/api/character/671")
+        interactor.fetchEpisode(url: TestConstants.episodeUrl)
         // Then
-        XCTAssertEqual(interactor.episode?.name, "Star Mort: Rickturn of the Jerri")
-        XCTAssertEqual(interactor.episode?.airDate, "May 31, 2020")
+        XCTAssertEqual(interactor.episode?.name, TestConstants.episodeName)
+        XCTAssertEqual(interactor.episode?.airDate, TestConstants.episodeAirDate)
         XCTAssertTrue(presenter.presentEpisodeCalled)
     }
     
@@ -61,7 +62,7 @@ class CharacterDetailInteractorTests: XCTestCase {
         // Given
         worker.testErrorCase = true
         // When
-        interactor.fetchEpisode(url: "https://rickandmortyapi.com/api/character/671")
+        interactor.fetchEpisode(url: TestConstants.episodeUrl)
         // Then
         XCTAssertNil(interactor.episode)
         XCTAssertFalse(presenter.presentEpisodeCalled)
