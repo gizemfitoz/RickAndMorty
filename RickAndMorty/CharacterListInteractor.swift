@@ -80,7 +80,7 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
         } else {
             layoutType = .list
         }
-        self.presenter?.presentToggleLayoutType(
+        self.presenter?.presentLayoutType(
             response: CharacterList.ToggleLayoutType.Response(type: layoutType)
         )
     }

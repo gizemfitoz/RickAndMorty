@@ -9,7 +9,7 @@ import Foundation
 
 protocol CharacterListPresentationLogic: AnyObject {
     func presentPagedCharacters(response: CharacterList.Characters.Response)
-    func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response)
+    func presentLayoutType(response: CharacterList.ToggleLayoutType.Response)
     func presentCharacterDetail()
     func presentLastSelectedItem(response: CharacterList.LastSelectedCharacter.Response)
     func clearCharacters()
@@ -30,8 +30,8 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
     }
     var charactersIndexDict: [Int: Int] = [:] // Id:Index
     
-    func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response) {
-        self.viewController?.displayToggleLayoutType(
+    func presentLayoutType(response: CharacterList.ToggleLayoutType.Response) {
+        self.viewController?.displayLayoutType(
             viewModel: CharacterList.ToggleLayoutType.ViewModel(type: response.type)
         )
     }

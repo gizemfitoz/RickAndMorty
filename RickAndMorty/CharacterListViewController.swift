@@ -9,7 +9,7 @@ import UIKit
 
 protocol CharacterListDisplayLogic: AnyObject {
     func displayCharacters(viewModel: CharacterList.Characters.ViewModel)
-    func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel)
+    func displayLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel)
     func displayCharacterDetail()
     func displayLastSelectedItem(viewModel: CharacterList.LastSelectedCharacter.ViewModel)
     func displayLoader(hide: Bool)
@@ -22,7 +22,7 @@ final class CharacterListViewController: BaseViewController {
     var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
     private var layoutBarButtonItem: UIBarButtonItem?
     var characters: [CharacterList.Character] = []
-    private var searchController = UISearchController()
+    var searchController = UISearchController()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -91,7 +91,7 @@ final class CharacterListViewController: BaseViewController {
         navigationItem.rightBarButtonItem = layoutBarButtonItem
     }
     
-    @objc private func layoutBarButtonItemTapped(sender: UIBarButtonItem) {
+    @objc func layoutBarButtonItemTapped(sender: UIBarButtonItem) {
         interactor?.fetchLayoutType()
     }
     
@@ -107,7 +107,7 @@ extension CharacterListViewController: CharacterListDisplayLogic {
         charactersCollectionView.reloadData()
     }
     
-    func displayToggleLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel) {
+    func displayLayoutType(viewModel: CharacterList.ToggleLayoutType.ViewModel) {
         setLayoutBarButtonItemImage(viewModel.type.image)
         charactersCollectionView.reloadData()
     }
