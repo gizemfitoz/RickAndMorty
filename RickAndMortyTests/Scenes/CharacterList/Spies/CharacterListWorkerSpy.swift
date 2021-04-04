@@ -11,8 +11,7 @@ import Foundation
 
 class CharacterListWorkerSpy: CharacterListWorkingLogic {
     func isFavorite(id: Int) -> Bool {
-        // TODO
-        return true
+        return CharacterListWorker().isFavorite(id: id)
     }
     
     var testErrorCase = false
