@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import API
 
 protocol CharacterDetailBusinessLogic: AnyObject {
     func fetchCharacter()
@@ -21,13 +22,17 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
     var worker: CharacterDetailWorkingLogic = CharacterDetailWorker()
     var characterId: Int!
     var isFavorite = false
-    
+    var character: CharactersResponse.Character?
+    var episode: EpisodeResponse?
+
     func fetchCharacter() {
         self.presenter?.presentLoader(hide: false)
         worker.getCharacter(id: characterId) { [weak self] response in
             guard let self = self else { return }
-            self.isFavorite = self.worker.isFavorite(id: response.id)
             
+            self.character = response
+            self.isFavorite = self.worker.isFavorite(id: response.id)
+        
             self.presenter?.presentCharacterDetail(
                 response: CharacterDetail.Character.Response(character: response, isFavorite: self.isFavorite)
             )
@@ -45,6 +50,7 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
         worker.getEpisode(url: url) { [weak self] response in
             guard let self = self else { return }
             self.presenter?.presentLoader(hide: true)
+            self.episode = response
             self.presenter?.presentEpisode(
                 response: CharacterDetail.Episode.Response(episode: response)
             )

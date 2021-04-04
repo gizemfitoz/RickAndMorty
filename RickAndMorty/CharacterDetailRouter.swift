@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CharacterDetailRoutingLogic: AnyObject {
-    
+    // nothing to handle
 }
 
 protocol CharacterDetailDataPassing: class {

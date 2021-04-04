@@ -18,6 +18,12 @@
 		1C32E0192619F0C000B30111 /* StubHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32E0182619F0C000B30111 /* StubHelper.swift */; };
 		1C32E030261A014400B30111 /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C32E02F261A014400B30111 /* Characters.json */; };
 		1C32E03F261A068900B30111 /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C32E03E261A068900B30111 /* Error.json */; };
+		1C32E057261A15B800B30111 /* CharacterDetailPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32E056261A15B800B30111 /* CharacterDetailPresenterSpy.swift */; };
+		1C32E064261A15D300B30111 /* CharacterDetailWorkerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32E063261A15D300B30111 /* CharacterDetailWorkerSpy.swift */; };
+		1C32E06C261A174800B30111 /* Character.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C32E06B261A174800B30111 /* Character.json */; };
+		1C32E071261A177600B30111 /* Episode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C32E070261A177500B30111 /* Episode.json */; };
+		1C32E076261A18B400B30111 /* CharacterDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32E075261A18B400B30111 /* CharacterDetailViewControllerTests.swift */; };
+		1C32E082261A1E4800B30111 /* CharacterDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32E081261A1E4800B30111 /* CharacterDetailInteractorTests.swift */; };
 		1C4BBBEF2617B938003A4DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */; };
 		1C4BBBF82617B93A003A4DC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */; };
 		1C4BBBFB2617B93A003A4DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BBBF92617B93A003A4DC2 /* LaunchScreen.storyboard */; };
@@ -78,6 +84,12 @@
 		1C32E0182619F0C000B30111 /* StubHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubHelper.swift; sourceTree = "<group>"; };
 		1C32E02F261A014400B30111 /* Characters.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; };
 		1C32E03E261A068900B30111 /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
+		1C32E056261A15B800B30111 /* CharacterDetailPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenterSpy.swift; sourceTree = "<group>"; };
+		1C32E063261A15D300B30111 /* CharacterDetailWorkerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailWorkerSpy.swift; sourceTree = "<group>"; };
+		1C32E06B261A174800B30111 /* Character.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Character.json; sourceTree = "<group>"; };
+		1C32E070261A177500B30111 /* Episode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Episode.json; sourceTree = "<group>"; };
+		1C32E075261A18B400B30111 /* CharacterDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		1C32E081261A1E4800B30111 /* CharacterDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailInteractorTests.swift; sourceTree = "<group>"; };
 		1C4BBBEB2617B938003A4DC2 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				1C32E050261A126000B30111 /* CharacterList */,
+				1C32E054261A158400B30111 /* CharacterDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -179,6 +192,8 @@
 			children = (
 				1C32E03E261A068900B30111 /* Error.json */,
 				1C32E02F261A014400B30111 /* Characters.json */,
+				1C32E06B261A174800B30111 /* Character.json */,
+				1C32E070261A177500B30111 /* Episode.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -191,6 +206,25 @@
 				1C32DFE92619EAD500B30111 /* CharacterListInteractorTests.swift */,
 			);
 			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		1C32E054261A158400B30111 /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1C32E055261A15A100B30111 /* Spies */,
+				1C32E075261A18B400B30111 /* CharacterDetailViewControllerTests.swift */,
+				1C32E081261A1E4800B30111 /* CharacterDetailInteractorTests.swift */,
+			);
+			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		1C32E055261A15A100B30111 /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				1C32E056261A15B800B30111 /* CharacterDetailPresenterSpy.swift */,
+				1C32E063261A15D300B30111 /* CharacterDetailWorkerSpy.swift */,
+			);
+			path = Spies;
 			sourceTree = "<group>";
 		};
 		1C4BBBE22617B938003A4DC2 = {
@@ -458,6 +492,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C32E06C261A174800B30111 /* Character.json in Resources */,
+				1C32E071261A177600B30111 /* Episode.json in Resources */,
 				1C32E03F261A068900B30111 /* Error.json in Resources */,
 				1C32E030261A014400B30111 /* Characters.json in Resources */,
 			);
@@ -505,10 +541,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C32E0132619EF0400B30111 /* CharacterListWorkerSpy.swift in Sources */,
+				1C32E057261A15B800B30111 /* CharacterDetailPresenterSpy.swift in Sources */,
 				1C32DFF12619EAD500B30111 /* CharacterListInteractorTests.swift in Sources */,
+				1C32E082261A1E4800B30111 /* CharacterDetailInteractorTests.swift in Sources */,
+				1C32E076261A18B400B30111 /* CharacterDetailViewControllerTests.swift in Sources */,
 				1C32DFF02619EAD500B30111 /* CharacterListViewControllerTests.swift in Sources */,
 				1C32E0192619F0C000B30111 /* StubHelper.swift in Sources */,
 				1C32E0092619EDE900B30111 /* CharacterListPresenterSpy.swift in Sources */,
+				1C32E064261A15D300B30111 /* CharacterDetailWorkerSpy.swift in Sources */,
 				1C32E00E2619EDF600B30111 /* CharacterListRouterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
