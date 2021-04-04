@@ -21,7 +21,8 @@ final class CharacterListViewController: BaseViewController {
     var interactor: CharacterListBusinessLogic?
     var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
     private var layoutBarButtonItem: UIBarButtonItem?
-    private var characters: [CharacterList.Character] = []
+    var characters: [CharacterList.Character] = []
+    private var searchController = UISearchController()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -49,6 +50,7 @@ final class CharacterListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupSearch()
         interactor?.fetchCharacters()
     }
     
@@ -65,9 +67,23 @@ final class CharacterListViewController: BaseViewController {
             UINib(nibName: "CharacterGridCollectionViewCell", bundle: .main),
             forCellWithReuseIdentifier: "CharacterGridCollectionViewCell")
         charactersCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
-
+        
         addLayoutBarButtonItem()
         setLayoutBarButtonItemImage(CharacterList.ToggleLayoutType.LayoutType.list.image)
+    }
+    
+    private func setupSearch() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.returnKeyType = .done
+        searchController.searchBar.placeholder = "Search Character..."
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.scopeButtonTitles = CharacterList.Character.StatusType.allValues
+        searchController.isActive = true
     }
     
     private func addLayoutBarButtonItem() {
@@ -111,51 +127,5 @@ extension CharacterListViewController: CharacterListDisplayLogic {
     
     func displayError(error: String) {
         showError(error: error)
-    }
-}
-
-extension CharacterListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        characters.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let layoutType = router?.dataStore?.layoutType ?? .list
-        
-        var identifier = ""
-        if layoutType == .list {
-            identifier = "CharacterListCollectionViewCell"
-        } else {
-            identifier = "CharacterGridCollectionViewCell"
-        }
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? CharacterListCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.set(viewModel: characters[indexPath.row])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch router?.dataStore?.layoutType ?? .list {
-        case .grid:
-            return CGSize(
-                width: (collectionView.frame.size.width - 15) / 2,
-                height: CharacterList.ToggleLayoutType.LayoutType.grid.rowHeight)
-        case .list:
-            return CGSize(
-                width: collectionView.frame.size.width,
-                height: CharacterList.ToggleLayoutType.LayoutType.list.rowHeight)
-        }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let position = scrollView.contentOffset.y
-        if position > charactersCollectionView.contentSize.height - 100 - scrollView.frame.size.height {
-            interactor?.fetchCharacters()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        interactor?.fetchCharacterDetail(id: characters[indexPath.row].id)
     }
 }

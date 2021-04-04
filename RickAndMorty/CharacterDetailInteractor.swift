@@ -27,7 +27,7 @@ final class CharacterDetailInteractor: CharacterDetailBusinessLogic, CharacterDe
         worker.getCharacter(id: characterId) { [weak self] response in
             guard let self = self else { return }
             self.isFavorite = self.worker.isFavorite(id: response.id)
-
+            
             self.presenter?.presentCharacterDetail(
                 response: CharacterDetail.Character.Response(character: response, isFavorite: self.isFavorite)
             )

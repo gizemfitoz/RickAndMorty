@@ -31,7 +31,7 @@ final class CharacterDetailViewController: BaseViewController {
     @IBOutlet weak var episodeStackView: UIStackView!
     var interactor: CharacterDetailBusinessLogic?
     var router: (CharacterDetailRoutingLogic & CharacterDetailDataPassing)?
-        
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -41,7 +41,7 @@ final class CharacterDetailViewController: BaseViewController {
         super.init(coder: aDecoder)
         setup()
     }
-        
+    
     private func setup() {
         let viewController = self
         let interactor = CharacterDetailInteractor()

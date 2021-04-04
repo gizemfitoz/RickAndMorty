@@ -10,6 +10,8 @@ import API
 
 protocol CharacterListWorkingLogic: AnyObject {
     func getCharacters(page: String,
+                       name: String,
+                       status: String,
                        onSuccess: @escaping (CharactersResponse) -> Void,
                        onError: @escaping (String) -> Void)
     func isFavorite(id: Int) -> Bool
@@ -17,9 +19,15 @@ protocol CharacterListWorkingLogic: AnyObject {
 
 final class CharacterListWorker: CharacterListWorkingLogic {
     func getCharacters(page: String,
+                       name: String,
+                       status: String,
                        onSuccess: @escaping (CharactersResponse) -> Void,
                        onError: @escaping (String) -> Void) {
-        API.getCharacters(page: page, onSuccess: onSuccess, onError: onError)
+        API.getCharacters(page: page,
+                          name: name,
+                          status: status,
+                          onSuccess: onSuccess,
+                          onError: onError)
     }
     
     func isFavorite(id: Int) -> Bool {

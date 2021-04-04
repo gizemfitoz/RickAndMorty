@@ -13,6 +13,8 @@ protocol CharacterListBusinessLogic: AnyObject {
     func fetchLayoutType()
     func fetchCharacterDetail(id: Int)
     func fetchLastSelectedItem()
+    func filterCharactersWith(request: CharacterList.Filter.Request)
+    func cancelFilter()
 }
 
 protocol CharacterListDataStore: AnyObject {
@@ -24,11 +26,13 @@ protocol CharacterListDataStore: AnyObject {
 final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDataStore {
     var presenter: CharacterListPresentationLogic?
     var worker: CharacterListWorkingLogic = CharacterListWorker()
+    var layoutType: CharacterList.ToggleLayoutType.LayoutType! = .list
+    var selectedCharacterId: Int?
+    var isPaginating = false
     var page: Int! = 0
     var totalPages: Int = 0
-    var layoutType: CharacterList.ToggleLayoutType.LayoutType! = .list
-    var isPaginating = false
-    var selectedCharacterId: Int?
+    var filterName = ""
+    var filterStatus = ""
     
     func fetchCharacters() {
         if isPaginating || (totalPages != 0 && self.page == totalPages) {
@@ -39,7 +43,9 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
         self.page = self.page + 1
         
         self.presenter?.presentLoader(hide: false)
-        worker.getCharacters(page: String(page)) { [weak self] response in
+        worker.getCharacters(page: String(page),
+                             name: filterName,
+                             status: filterStatus) { [weak self] response in
             guard let self = self else { return }
             self.presenter?.presentLoader(hide: true)
             self.isPaginating = false
@@ -47,8 +53,9 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
             self.presentPagedCharacters(characters: response.results)
         } onError: { [weak self] error in
             guard let self = self else { return }
+            self.isPaginating = false
             self.presenter?.presentLoader(hide: true)
-            self.presenter?.presentError(error: error)
+            print("🔥 Error occurred: \(error)")
         }
     }
     
@@ -59,14 +66,14 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
                     id: $0.id,
                     image: $0.image,
                     name: $0.name,
-                    status: $0.status,
+                    status: CharacterList.Character.StatusType(rawValue: $0.status.lowercased()) ?? .all,
                     species: $0.species,
                     isFavorite: worker.isFavorite(id: $0.id))
             }
         )
         self.presenter?.presentPagedCharacters(response: response)
     }
-        
+    
     func fetchLayoutType() {
         if layoutType == .list {
             layoutType = .grid
@@ -92,5 +99,28 @@ final class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDa
                 isFavorite: isFavorite
             )
         )
+    }
+    
+    func filterCharactersWith(request: CharacterList.Filter.Request) {
+        if request.name == filterName && request.status.rawValue == filterStatus {
+            return
+        }
+        clearValues()
+        filterName = request.name.lowercased()
+        filterStatus = request.status.rawValue.lowercased()
+        fetchCharacters()
+    }
+    
+    func cancelFilter() {
+        clearValues()
+        fetchCharacters()
+    }
+    
+    func clearValues() {
+        totalPages = 0
+        page = 0
+        filterName = ""
+        filterStatus = ""
+        presenter?.clearCharacters()
     }
 }

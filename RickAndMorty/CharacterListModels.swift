@@ -9,6 +9,24 @@ import UIKit
 import API
 
 enum CharacterList {
+    
+    struct Character {
+        var id: Int
+        var image: String
+        var name: String
+        var status: StatusType
+        var species: String
+        var isFavorite: Bool
+        
+        enum StatusType: String {
+            case all = ""
+            case alive
+            case dead
+            case unknown
+            static let allValues = ["All", "Alive", "Dead", "Unknown"]
+        }
+    }
+    
     enum Characters {
         struct Response {
             var pagedCharacters: [Character]
@@ -31,15 +49,13 @@ enum CharacterList {
         }
     }
     
-    struct Character {
-        var id: Int
-        var image: String
-        var name: String
-        var status: String
-        var species: String
-        var isFavorite: Bool
+    enum Filter {
+        struct Request {
+            var name: String
+            var status: Character.StatusType
+        }
     }
-
+    
     enum ToggleLayoutType {
         struct Response {
             var type: LayoutType

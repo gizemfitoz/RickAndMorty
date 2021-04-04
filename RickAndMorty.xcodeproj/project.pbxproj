@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1C32DFBD2618981900B30111 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32DFBC2618981900B30111 /* BaseViewController.swift */; };
+		1C32DFD22619B8C800B30111 /* CharacterListViewController+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32DFD12619B8C700B30111 /* CharacterListViewController+Search.swift */; };
+		1C32DFDA2619B8E300B30111 /* CharacterListViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32DFD92619B8E300B30111 /* CharacterListViewController+CollectionView.swift */; };
 		1C4BBBEF2617B938003A4DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */; };
 		1C4BBBF82617B93A003A4DC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */; };
 		1C4BBBFB2617B93A003A4DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C4BBBF92617B93A003A4DC2 /* LaunchScreen.storyboard */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		1C32DFBC2618981900B30111 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1C32DFD12619B8C700B30111 /* CharacterListViewController+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListViewController+Search.swift"; sourceTree = "<group>"; };
+		1C32DFD92619B8E300B30111 /* CharacterListViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterListViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		1C4BBBEB2617B938003A4DC2 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 			children = (
 				1C4BBC3F2617BF27003A4DC2 /* CharacterList.storyboard */,
 				1C4BBC402617BF27003A4DC2 /* CharacterListViewController.swift */,
+				1C32DFD12619B8C700B30111 /* CharacterListViewController+Search.swift */,
+				1C32DFD92619B8E300B30111 /* CharacterListViewController+CollectionView.swift */,
 				1C4BBC412617BF27003A4DC2 /* CharacterListPresenter.swift */,
 				1C4BBC422617BF27003A4DC2 /* CharacterListInteractor.swift */,
 				1C4BBC432617BF27003A4DC2 /* CharacterListModels.swift */,
@@ -408,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C32DFD22619B8C800B30111 /* CharacterListViewController+Search.swift in Sources */,
 				1CFFABDF26187D47007B9E43 /* CharacterDetailWorker.swift in Sources */,
 				1CFFABC9261807CD007B9E43 /* CharacterGridCollectionViewCell.swift in Sources */,
 				1CFFABDB26187D47007B9E43 /* CharacterDetailViewController.swift in Sources */,
@@ -415,6 +422,7 @@
 				1C4BBC482617BF27003A4DC2 /* CharacterListPresenter.swift in Sources */,
 				1C32DFBD2618981900B30111 /* BaseViewController.swift in Sources */,
 				1C4BBC492617BF27003A4DC2 /* CharacterListInteractor.swift in Sources */,
+				1C32DFDA2619B8E300B30111 /* CharacterListViewController+CollectionView.swift in Sources */,
 				1C4BBC4C2617BF27003A4DC2 /* CharacterListRouter.swift in Sources */,
 				1C4BBC312617BB33003A4DC2 /* AppRouter.swift in Sources */,
 				1CFFABDC26187D47007B9E43 /* CharacterDetailPresenter.swift in Sources */,

@@ -24,7 +24,7 @@ class CharacterListCollectionViewCell: UICollectionViewCell {
         imageView.sd_setImage(with: URL(string: viewModel.image), completed: nil)
         setFavoriteImageView(isFavorite: viewModel.isFavorite)
         nameLabel.text = viewModel.name
-        statusLabel.text = viewModel.status
+        statusLabel.text = viewModel.status.rawValue.capitalized
         speciesLabel.text = viewModel.species
     }
     

@@ -12,6 +12,7 @@ protocol CharacterListPresentationLogic: AnyObject {
     func presentToggleLayoutType(response: CharacterList.ToggleLayoutType.Response)
     func presentCharacterDetail()
     func presentLastSelectedItem(response: CharacterList.LastSelectedCharacter.Response)
+    func clearCharacters()
     func presentLoader(hide: Bool)
     func presentError(error: String)
 }
@@ -23,8 +24,8 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
         didSet {
             self.charactersIndexDict = self.characters.enumerated()
                 .reduce(into: [:]) { (dict, tuple: (index: Int, character: CharacterList.Character)) in
-                dict[tuple.character.id] = tuple.index
-            }
+                    dict[tuple.character.id] = tuple.index
+                }
         }
     }
     var charactersIndexDict: [Int: Int] = [:] // Id:Index
@@ -55,6 +56,12 @@ final class CharacterListPresenter: CharacterListPresentationLogic {
             viewModel: CharacterList.LastSelectedCharacter.ViewModel(
                 character: character,
                 index: characterIndex))
+    }
+    
+    func clearCharacters() {
+        characters.removeAll()
+        charactersIndexDict.removeAll()
+        viewController?.displayCharacters(viewModel: CharacterList.Characters.ViewModel(allCharacters: []))
     }
     
     func presentLoader(hide: Bool) {
