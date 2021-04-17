@@ -156,14 +156,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C32DFBB2618980500B30111 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				1C32DFBC2618981900B30111 /* BaseViewController.swift */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
 		1C32DFE72619EAB600B30111 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,14 +231,6 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		1C32E096261A2E4500B30111 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				1C32E097261A2E5700B30111 /* Constants.swift */,
-			);
-			name = Constants;
-			sourceTree = "<group>";
-		};
 		1C4BBBE22617B938003A4DC2 = {
 			isa = PBXGroup;
 			children = (
@@ -271,9 +255,9 @@
 		1C4BBBED2617B938003A4DC2 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
-				1C4BBC272617BB10003A4DC2 /* Application */,
-				1C4BBC3E2617BEF1003A4DC2 /* Scenes */,
-				1C32E096261A2E4500B30111 /* Constants */,
+				1CA004B3262B662C00E119CE /* Application */,
+				1CA004B4262B663E00E119CE /* Scenes */,
+				1CA004BD262B6DB100E119CE /* Constants */,
 				1C4BBBF72617B93A003A4DC2 /* Assets.xcassets */,
 				1C4BBBF92617B93A003A4DC2 /* LaunchScreen.storyboard */,
 				1C4BBBFC2617B93A003A4DC2 /* Info.plist */,
@@ -302,36 +286,42 @@
 			path = RickAndMortyUITests;
 			sourceTree = "<group>";
 		};
-		1C4BBC272617BB10003A4DC2 /* Application */ = {
+		1C4BBC982617DDF6003A4DC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1CA004B3262B662C00E119CE /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				1C4BBC282617BB29003A4DC2 /* AppContainer.swift */,
 				1C4BBBEE2617B938003A4DC2 /* AppDelegate.swift */,
 				1C4BBC302617BB33003A4DC2 /* AppRouter.swift */,
 			);
-			name = Application;
+			path = Application;
 			sourceTree = "<group>";
 		};
-		1C4BBC3E2617BEF1003A4DC2 /* Scenes */ = {
+		1CA004B4262B663E00E119CE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				1C32DFBB2618980500B30111 /* Base */,
-				1C4BBC542617BF56003A4DC2 /* CharacterList */,
-				1CFFABD226187D2E007B9E43 /* CharacterDetail */,
+				1CA004B7262B6CF100E119CE /* Base */,
+				1CA004B8262B6D0B00E119CE /* CharacterList */,
+				1CA004BC262B6D9100E119CE /* CharacterDetail */,
 			);
-			name = Scenes;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		1C4BBC532617BF49003A4DC2 /* Views */ = {
+		1CA004B7262B6CF100E119CE /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				1CFFABCD26187C93007B9E43 /* CharacterListCollectionViewCell */,
-				1CFFABCE26187CA3007B9E43 /* CharacterGridCollectionViewCell */,
+				1C32DFBC2618981900B30111 /* BaseViewController.swift */,
 			);
-			name = Views;
+			path = Base;
 			sourceTree = "<group>";
 		};
-		1C4BBC542617BF56003A4DC2 /* CharacterList */ = {
+		1CA004B8262B6D0B00E119CE /* CharacterList */ = {
 			isa = PBXGroup;
 			children = (
 				1C4BBC3F2617BF27003A4DC2 /* CharacterList.storyboard */,
@@ -343,37 +333,39 @@
 				1C4BBC432617BF27003A4DC2 /* CharacterListModels.swift */,
 				1C4BBC442617BF27003A4DC2 /* CharacterListWorker.swift */,
 				1C4BBC452617BF27003A4DC2 /* CharacterListRouter.swift */,
-				1C4BBC532617BF49003A4DC2 /* Views */,
+				1CA004B9262B6D1C00E119CE /* Views */,
 			);
-			name = CharacterList;
+			path = CharacterList;
 			sourceTree = "<group>";
 		};
-		1C4BBC982617DDF6003A4DC2 /* Frameworks */ = {
+		1CA004B9262B6D1C00E119CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1CA004BA262B6D3200E119CE /* CharacterListCollectionViewCell */,
+				1CA004BB262B6D4100E119CE /* CharacterGridCollectionViewCell */,
 			);
-			name = Frameworks;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		1CFFABCD26187C93007B9E43 /* CharacterListCollectionViewCell */ = {
+		1CA004BA262B6D3200E119CE /* CharacterListCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				1C4BBCB32617EF3B003A4DC2 /* CharacterListCollectionViewCell.swift */,
 				1C4BBCB42617EF3B003A4DC2 /* CharacterListCollectionViewCell.xib */,
 			);
-			name = CharacterListCollectionViewCell;
+			path = CharacterListCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		1CFFABCE26187CA3007B9E43 /* CharacterGridCollectionViewCell */ = {
+		1CA004BB262B6D4100E119CE /* CharacterGridCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				1CFFABC8261807CD007B9E43 /* CharacterGridCollectionViewCell.swift */,
 				1CFFABB4261804C9007B9E43 /* CharacterGridCollectionViewCell.xib */,
 			);
-			name = CharacterGridCollectionViewCell;
+			path = CharacterGridCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		1CFFABD226187D2E007B9E43 /* CharacterDetail */ = {
+		1CA004BC262B6D9100E119CE /* CharacterDetail */ = {
 			isa = PBXGroup;
 			children = (
 				1CFFABD326187D47007B9E43 /* CharacterDetail.storyboard */,
@@ -384,7 +376,15 @@
 				1CFFABD826187D47007B9E43 /* CharacterDetailWorker.swift */,
 				1CFFABD926187D47007B9E43 /* CharacterDetailRouter.swift */,
 			);
-			name = CharacterDetail;
+			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		1CA004BD262B6DB100E119CE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				1C32E097261A2E5700B30111 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
